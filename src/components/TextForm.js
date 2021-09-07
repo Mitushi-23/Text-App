@@ -19,8 +19,7 @@ export default function TextForm(props) {
 const CopyText =()=>{
   var text = document.getElementById('box');
   text.select();
-  navigator.clipboard.writeText(text.value);
-  
+  navigator.clipboard.writeText(text.target.value);  
 } 
  const ExtraSpace=()=>{
    const newText = text.split(/[ ]+/);
@@ -35,7 +34,7 @@ const CopyText =()=>{
 
   return (
     <>
-      <div className="container my-3" style ={{color: props.mode==='light'?'gray':'white'}}>
+      <div className="container my-3" style ={{color: props.mode==='light'?'black':'white'}}>
         <h1>{props.heading}</h1>
         <textarea
           className="form-control my-3" id="box" style={{backgroundColor: props.mode==='light'?'white':'gray', color: props.mode==='light'?'black':'white'}}
