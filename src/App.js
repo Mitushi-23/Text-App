@@ -23,7 +23,7 @@ const toggleMode = () =>{
   
   return (
     <>
-      <Navbar title="Portfolio" mode={mode} toggleMode={toggleMode}/>
+      <Navbar title="TextApp" mode={mode} toggleMode={toggleMode}/>
       <TextForm heading="Enter the text below" mode = {mode} />
     </>
   );

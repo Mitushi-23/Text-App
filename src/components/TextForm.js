@@ -16,8 +16,16 @@ export default function TextForm(props) {
     setText(newText);
   };
 
- 
-
+const CopyText =()=>{
+  var text = document.getElementById('box');
+  text.select();
+  navigator.clipboard.writeText(text.value);
+  
+} 
+ const ExtraSpace=()=>{
+   const newText = text.split(/[ ]+/);
+   setText(newText.join(" "));
+ }
   const Clear =()=>{
       const newText = "";
       setText(newText);
@@ -30,7 +38,7 @@ export default function TextForm(props) {
       <div className="container my-3" style ={{color: props.mode==='light'?'gray':'white'}}>
         <h1>{props.heading}</h1>
         <textarea
-          className="form-control my-3"style={{backgroundColor: props.mode==='light'?'white':'gray', color: props.mode==='light'?'black':'white'}}
+          className="form-control my-3" id="box" style={{backgroundColor: props.mode==='light'?'white':'gray', color: props.mode==='light'?'black':'white'}}
           onChange={handleOnChange}
           value={text}
           rows="9"
@@ -46,7 +54,13 @@ export default function TextForm(props) {
           Clear
         </button>
 
-        
+        <button className="btn btn-primary mx-2 my-1" onClick={CopyText}>
+          Copy Text
+        </button>
+
+        <button className="btn btn-primary mx-2 my-1" onClick={ExtraSpace}>
+          Remove Extra Space
+        </button>
         
       </div>
 
