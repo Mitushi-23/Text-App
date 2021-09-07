@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 
+// import copy from "copy-to-clipboard";
+
+
+
 export default function TextForm(props) {
   
   const ConvertToUp = () => {
     const newText = text.toUpperCase();
     setText(newText);
+    props.showAlert(": Converted to Upper Case", "success");
+
   };
 
   const handleOnChange = (event) => {
@@ -14,20 +20,35 @@ export default function TextForm(props) {
   const ConvertToLo = () => {
     const newText = text.toLowerCase();
     setText(newText);
+    props.showAlert(": Converted to Lower Case", "success");
+
   };
 
-const CopyText =()=>{
-  var text = document.getElementById('box');
-  text.select();
-  navigator.clipboard.writeText(text.target.value);  
-} 
+  const CopyText =()=>{
+    var text = document.getElementById('box');
+    text.select();
+    document.execCommand(text.value); 
+    props.showAlert(": Text copied to clipboard", "success");
+
+  } 
+
+
+// const CopyText =()=>{
+//   var text = document.getElementById('box');
+//   text.select();
+//   copy(text.value); 
+// } 
  const ExtraSpace=()=>{
    const newText = text.split(/[ ]+/);
    setText(newText.join(" "));
+   props.showAlert(": Extra Space is removed", "success");
+
  }
   const Clear =()=>{
       const newText = "";
       setText(newText);
+    props.showAlert(": Text is cleared", "success");
+
   }
   const [text, setText] = useState('');
 //   const text1 = setText(text);
