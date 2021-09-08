@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-// import copy from "copy-to-clipboard";
+import copy from "copy-to-clipboard";
 
 
 
@@ -24,20 +24,20 @@ export default function TextForm(props) {
 
   };
 
-  const CopyText =()=>{
-    var text = document.getElementById('box');
-    text.select();
-    document.execCommand(text.value); 
-    props.showAlert(": Text copied to clipboard", "success");
+  // const CopyText =()=>{
+  //   var text = document.getElementById('box');
+  //   text.select();
+  //   document.execCommand(text.value); 
+  //   props.showAlert(": Text copied to clipboard", "success");
 
-  } 
+  // } 
 
 
-// const CopyText =()=>{
-//   var text = document.getElementById('box');
-//   text.select();
-//   copy(text.value); 
-// } 
+const CopyText =()=>{
+  var text = document.getElementById('box');
+  text.select();
+  copy(text.value); 
+} 
  const ExtraSpace=()=>{
    const newText = text.split(/[ ]+/);
    setText(newText.join(" "));

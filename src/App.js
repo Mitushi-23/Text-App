@@ -33,10 +33,24 @@ function App() {
     }
   }
 
+  const toggleModeBlue = () => {
+    if (mode === 'blue-light' || mode === 'light' || mode ==='dark') {
+      setmode('blue-dark');
+      document.body.style.backgroundColor = '#0dcaf0';
+      showAlert(": Dark mode is enabled", "success");
+    }
+    else {
+      setmode('blue-light'|| mode === 'light' || mode ==='dark');
+      document.body.style.backgroundColor = '#6f42c1';
+      showAlert(": Light mode is enabled", "success");
+
+    }
+  }
+
 
   return (
     <>
-      <Navbar title="TextApp" mode={mode} toggleMode={toggleMode} />
+      <Navbar title="TextApp" mode={mode} toggleMode={toggleMode} toggleModeBlue = {toggleModeBlue} />
       <Alert alert={alert} />
       <TextForm showAlert={showAlert} heading="Enter the text below" mode={mode} />
     </>
