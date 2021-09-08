@@ -14,7 +14,7 @@ function App() {
       msg: message,
       type: type
     })
-  setTimeout(() => {
+   setTimeout(() => {
     setalert(null);
   }, 1500);
 
@@ -37,12 +37,13 @@ function App() {
     if (mode === 'blue-light' || mode === 'light' || mode ==='dark') {
       setmode('blue-dark');
       document.body.style.backgroundColor = '#0dcaf0';
-      showAlert(": Dark mode is enabled", "success");
+      showAlert(": Light Blue mode is enabled", "success");
     }
     else {
-      setmode('blue-light'|| mode === 'light' || mode ==='dark');
+       if(mode==='blue-dark'|| mode === 'light' || mode ==='dark');
+       setmode('blue-light')
       document.body.style.backgroundColor = '#6f42c1';
-      showAlert(": Light mode is enabled", "success");
+      showAlert(": Dark Blue mode is enabled", "success");
 
     }
   }
