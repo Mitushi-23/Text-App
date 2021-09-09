@@ -3,6 +3,16 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
+import About from "./components/About";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
+
+
 
 import React, { useState } from 'react'
 
@@ -24,12 +34,13 @@ function App() {
       setmode('dark');
       document.body.style.backgroundColor = '#242326db';
       showAlert(": Dark mode is enabled", "success");
+      document.title = "TextApp - Dark";
     }
     else {
       setmode('light');
       document.body.style.backgroundColor = 'white';
       showAlert(": Light mode is enabled", "success");
-
+      document.title = "TextApp - Light";
     }
   }
 
@@ -38,22 +49,32 @@ function App() {
       setmode('blue-dark');
       document.body.style.backgroundColor = '#0dcaf0';
       showAlert(": Light Blue mode is enabled", "success");
+      document.title = "TextApp - Blue Light";
     }
     else {
        if(mode==='blue-dark'|| mode === 'light' || mode ==='dark');
        setmode('blue-light')
       document.body.style.backgroundColor = '#6f42c1';
       showAlert(": Dark Blue mode is enabled", "success");
-
+      document.title = "TextApp - Blue Dark";
     }
   }
 
-
+  
   return (
     <>
+    <Router>
       <Navbar title="TextApp" mode={mode} toggleMode={toggleMode} toggleModeBlue = {toggleModeBlue} />
       <Alert alert={alert} />
-      <TextForm showAlert={showAlert} heading="Enter the text below" mode={mode} />
+      <Switch>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/">
+          <TextForm showAlert={showAlert} heading="Enter the text below" mode={mode} />
+          </Route>
+        </Switch>
+  </Router>
     </>
   );
 }
