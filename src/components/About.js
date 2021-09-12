@@ -57,7 +57,7 @@ export default function About(props) {
 )}
 
 
-{/* <div class="accordion" id="accordionExample">
+/* <div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -94,4 +94,4 @@ export default function About(props) {
       </div>
     </div>
   </div>
-</div> */}
+</div> */
