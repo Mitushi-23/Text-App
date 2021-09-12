@@ -65,21 +65,21 @@ const CopyText =()=>{
           rows="9"
           placeholder="Enter text here" 
         ></textarea>
-        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={ConvertToUp}>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" style ={{color: props.mode==='light' || props.mode==='blue-dark'?'black':'white'}} onClick={ConvertToUp}>
           ChangeToUpperCase
         </button>
-        <button disabled={text.length===0}className="btn btn-primary mx-2 my-1" onClick={ConvertToLo}>
+        <button disabled={text.length===0}className="btn btn-primary mx-2 my-1" style ={{color: props.mode==='light' || props.mode==='blue-dark'?'black':'white'}} onClick={ConvertToLo}>
           ChangeToLowerCase
         </button>
-        <button disabled={text.length===0}className="btn btn-primary mx-2 my-1" onClick={Clear}>
+        <button disabled={text.length===0}className="btn btn-primary mx-2 my-1" style ={{color: props.mode==='light' || props.mode==='blue-dark'?'black':'white'}} onClick={Clear}>
           Clear
         </button>
 
-        <button disabled={text.length===0}className="btn btn-primary mx-2 my-1" onClick={CopyText}>
+        <button disabled={text.length===0}className="btn btn-primary mx-2 my-1" style ={{color: props.mode==='light' || props.mode==='blue-dark'?'black':'white'}} onClick={CopyText}>
           Copy Text
         </button>
 
-        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={ExtraSpace}>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" style ={{color: props.mode==='light' || props.mode==='blue-dark'?'black':'white'}} onClick={ExtraSpace}>
           Remove Extra Space
         </button>
         
