@@ -37,6 +37,7 @@ const CopyText =()=>{
   var text = document.getElementById('box');
   text.select();
   copy(text.value); 
+  // document.getSelection().removeAllRange();
 } 
  const ExtraSpace=()=>{
    const newText = text.split(/[ ]+/);
@@ -86,11 +87,11 @@ const CopyText =()=>{
 
       <div className="container contain" style ={{color: props.mode==='dark' || props.mode==='blue-dark'?'white':'black' , backgroundColor: props.mode==='light'|| props.mode==='blue-light'?'rgb(226, 226, 198)':'rgb(9, 56, 115)'}}>
           <h2> <b> Your summary is here </b></h2>
-          <p> {text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
+          <p> {text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
           <p> {0.08 * text.split(" ").filter((element)=>{return element.length!==0}).length} minutes read</p>
           
           <h3><b> Preview</b> </h3>
-          <p>{text}</p>
+          <p>{text.length>0 ? text : "Nothing to preview!"}</p>
       </div>
     </>
   );
