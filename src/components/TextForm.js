@@ -59,7 +59,7 @@ const CopyText =()=>{
       <div className="container my-3" style ={{color: props.mode==='light' || props.mode==='blue-dark'?'black':'white'}}>
         <h1>{props.heading}</h1>
         <textarea
-          className="form-control my-3" id="box" style={{backgroundColor: props.mode==='light' || props.mode==='blue-dark'?'white':'#80808057', color: props.mode==='light' | props.mode==='blue-dark'?'black':'white'}}
+          className="form-control my-3" id="box" style={{backgroundColor: props.mode==='light' ?'white':'#80808057', color: props.mode==='light' || props.mode==='blue-dark'?'black':'white'}}
           onChange={handleOnChange}
           value={text}
           rows="9"
