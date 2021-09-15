@@ -18,7 +18,7 @@ export default function About(props) {
 </p>
 <div className="collapse" id="collapseExample1">
   <div className={`card card-body my-2 bg-transparent text-${props.mode==='dark' || props.mode==='blue-light'?'light':'dark'}`}>
-    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+    This is the simple text converter app made with some basics of ReactJS. 
   </div>
 </div>
 
@@ -33,7 +33,7 @@ export default function About(props) {
 </p>
 <div className="collapse" id="collapseExample2">
   <div className={`card card-body my-2 bg-transparent text-${props.mode==='dark' || props.mode==='blue-light'?'light':'dark'}`}>
-    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+    In this app you can convert your text to desired case i.e. either to UpperCase or to LowerCase. By this app you can remove extra spaces if present and also the text which you wrote or have converted can also be copied for further use.
   </div>
 </div>
 
@@ -47,7 +47,7 @@ export default function About(props) {
 </p>
 <div className="collapse" id="collapseExample3">
   <div className={`card card-body my-2 bg-transparent text-${props.mode==='dark' || props.mode==='blue-light'?'light':'dark'}`}>
-    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+    This app is made for different modes as per the user's convinience.
   </div>
 </div>
 
