@@ -8,13 +8,16 @@ export default function TextForm(props) {
     setText(newText);
     props.showAlert(": Converted to Upper Case", "success");
   };
-
+let txt;
   const handleOnChange = (event) => {
-    setText(event.target.value);
+  setText(event.target.value);
+  txt = event.target.value;
+  console.log(txt);
   };
 
   const ConvertToLo = () => {
     const newText = text.toLowerCase();
+    // console.log(txt);
     setText(newText);
     props.showAlert(": Converted to Lower Case", "success");
   };
@@ -46,7 +49,7 @@ export default function TextForm(props) {
     console.log(newText.length);
     if(newText.length >1)
     {
-    for (let i = 0; i < newText.length - 1; i++) {
+    for (let i = 0; i < newText.length-1; i++) {
       newText[i] = newText[i].trim();
       if (newText[i][0] !== "") {
         const str = newText[i];
@@ -54,14 +57,21 @@ export default function TextForm(props) {
         newstr += string + ". ";
       }
     }
+    console.log(newText[newText.length-1]);
+    newText[newText.length-1] = newText[newText.length-1].trim();
+    if(newText[newText.length-1]!=="")
+    {
+    newstr += newText[newText.length-1][0].toUpperCase() + newText[newText.length-1].slice(1);
+    }
     setText(newstr);
     props.showAlert(": Text is Capitalized", "success");
   }
   else
   {
-    newstr=text;
+    newstr=newText[0][0].toUpperCase()+ newText[0].slice(1);
     setText(newstr);
-    props.showAlert(": No full stop!", "danger");
+    props.showAlert(": Text is Capitalized", "success");
+    // props.showAlert(": No full stop!", "danger");
   }
   };
   const Clear = () => {
