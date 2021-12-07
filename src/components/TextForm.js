@@ -8,16 +8,11 @@ export default function TextForm(props) {
     setText(newText);
     props.showAlert(": Converted to Upper Case", "success");
   };
-let txt;
   const handleOnChange = (event) => {
   setText(event.target.value);
-  txt = event.target.value;
-  console.log(txt);
   };
-
   const ConvertToLo = () => {
     const newText = text.toLowerCase();
-    // console.log(txt);
     setText(newText);
     props.showAlert(": Converted to Lower Case", "success");
   };
