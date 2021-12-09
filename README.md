@@ -6,7 +6,7 @@
 * In this project you can convert the input text either to uppercase or to lowercase.
 * You can also remove extra spaces from the text.
 * With this app you can also copy the text.
-* The input text can be capitalized and also you the download your new text.
+* The input text can be capitalized and also you can download your new text.
 
 ## Here is the downloaded text
 ![Screenshot (11)](https://user-images.githubusercontent.com/83106116/144919746-8025f11b-ad98-45ef-92f3-a861bd868afc.png)
