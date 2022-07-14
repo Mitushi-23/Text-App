@@ -1,8 +1,5 @@
-import { Box } from "@mui/material";
-// import { Container } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import MicIcon from "@mui/icons-material/Mic";
-import StopIcon from "@mui/icons-material/Stop";
 import { forwardRef, useRef } from "react";
 import ReactToPrint, { PrintContextConsumer } from "react-to-print";
 import copy from "copy-to-clipboard";
@@ -18,13 +15,11 @@ import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import TextIncreaseIcon from "@mui/icons-material/TextIncrease";
 import TextDecreaseIcon from "@mui/icons-material/TextDecrease";
-import FormatColorTextIcon from "@mui/icons-material/FormatColorText";
-import { ColorPicker, useColor } from "react-color-palette";
+import { useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
 import ClearAllIcon from "@mui/icons-material/ClearAll";
 import { Tooltip } from "@mui/material";
 import LocalPrintshopIcon from "@mui/icons-material/LocalPrintshop";
-import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import MicOffIcon from "@mui/icons-material/MicOff";
 
 const ComponentToPrint = forwardRef((props, ref) => {
@@ -103,13 +98,12 @@ function TextForm(props) {
   const handleSaveNote = () => {
     setsaveNotes([...saveNotes, note]);
     setnote("");
-    
   };
   
 let newNote="";
-  {saveNotes.map(n=>{
-    newNote+=n+'\n';
-  })}
+  saveNotes.map(n=>(
+    newNote+=n+'\n'
+  ))
   /** -------------------------------------------- */
 
   const [textAlign, settextAlign] = useState("start");
@@ -117,7 +111,7 @@ let newNote="";
   const [fontWeight, setfontWeight] = useState(false);
   const [fontStyle, setfontStyle] = useState(false);
   const [textDecoration, settextDecoration] = useState(false);
-  const [color, setColor] = useColor("hex", "#121212");
+  const [color, setColor] = useColor("#000");
   const [pallete, setpallete] = React.useState("#0000");
 
   const ref = useRef();
@@ -147,7 +141,6 @@ let newNote="";
     var text = document.getElementById("box");
     text.select();
     copy(text.value);
-    // document.getSelection().removeAllRange();
   };
   const ExtraSpace = () => {
     const newText = text.split(/[ ]+/);
@@ -182,30 +175,27 @@ let newNote="";
       newstr = newText[0][0].toUpperCase() + newText[0].slice(1);
       setText(newstr);
       props.showAlert(": Text is Capitalized", "success");
-      // props.showAlert(": No full stop!", "danger");
     }
   };
   const Clear = () => {
     const newText = "";
     setText(newText);
     setsaveNotes([])
-    // newNote="";
     props.showAlert(": Text is cleared", "success");
   };
 
-  const downloadTxtFile = () => {
-    const element = document.createElement("a");
-    const file = new Blob([document.getElementById("box").value], {
-      type: "text/plain;charset=utf-8",
-    });
-    element.href = URL.createObjectURL(file);
-    element.download = "myFile.txt";
-    document.body.appendChild(element);
-    element.click();
-  };
+  // const downloadTxtFile = () => {
+  //   const element = document.createElement("a");
+  //   const file = new Blob([document.getElementById("box").value], {
+  //     type: "text/plain;charset=utf-8",
+  //   });
+  //   element.href = URL.createObjectURL(file);
+  //   element.download = "myFile.txt";
+  //   document.body.appendChild(element);
+  //   element.click();
+  // };
 
   const [text, setText] = useState("");
-  //   const text1 = setText(text);
 
   return (
     <>
@@ -368,7 +358,6 @@ let newNote="";
                 onChange={handleOnChange}
                 value={text}
                 rows="9"
-                // column="4"
                 placeholder="Enter text here"
               ></textarea>
               {listen ? (
@@ -377,7 +366,6 @@ let newNote="";
                 </span>
               ) : (
                 <span>
-                  {/* <StopIcon /> */}
                   <MicOffIcon />
                 </span>
               )}
@@ -389,10 +377,6 @@ let newNote="";
               <Button onClick={() => setlisten((prevState) => !prevState)}>
                 {listen ? <span>Stop</span> : <span>Start</span>}
               </Button>
-              {/* &nbsp; &nbsp;
-                <Tooltip title="Clear All" arrow placement="top">
-                  <ClearAllIcon style={{ cursor: "pointer" }} onClick={()=> newNote=""} />
-                </Tooltip> */}
               <hr />
               <p>{note}</p>
             </div>
@@ -422,21 +406,7 @@ let newNote="";
                 </ReactToPrint>
               </h3>
               <hr />
-              {/* <ComponentToPrint
-                ref={ref}
-                text={text+'/n'+n}
-                textAlign={textAlign}
-                fontWeight={fontWeight}
-                fontSize={fontSize}
-                fontStyle={fontStyle}
-                textDecoration={textDecoration}
-                color={color}
-              /> */}
-              {/* <hr /> */}
-
-              {/* {saveNotes.map((n) => (
-                <p>{n}</p>
-                ))} */}
+             
                 <ComponentToPrint
                   ref={ref}
                   text={text+'\n'+newNote+'\n'}
@@ -449,7 +419,6 @@ let newNote="";
                 />
             </div>
             <div
-              // className="container contain"
               style={{
                 width: "15%",
                 marginTop: "2%",
@@ -466,18 +435,18 @@ let newNote="";
                   <ListGroup.Item>
                     Words: &nbsp;
                     {
-                      text.split(/\s+/).filter((element) => {
+                      (text+newNote).split(/\s+/).filter((element) => {
                         return element.length !== 0;
                       }).length
                     }{" "}
                   </ListGroup.Item>
                   <ListGroup.Item>
-                    Characters: &nbsp; {text.length}{" "}
+                    Characters: &nbsp; {(text+newNote).length}{" "}
                   </ListGroup.Item>
                   <ListGroup.Item>
                     Minutes Read: &nbsp;{" "}
                     {0.08 *
-                      text.split(" ").filter((element) => {
+                      (text+newNote).split(" ").filter((element) => {
                         return element.length !== 0;
                       }).length}{" "}
                   </ListGroup.Item>
@@ -485,102 +454,6 @@ let newNote="";
               </Card>
             </div>
           </div>
-          {/* <div>
-          <button
-            disabled={text.length === 0}
-            className="btn btn-primary mx-2 my-1"
-            style={{
-              color:
-                props.mode === "light" || props.mode === "blue-dark"
-                  ? "black"
-                  : "white",
-            }}
-            onClick={ConvertToUp}
-          >
-            ChangeToUpperCase
-          </button>
-          <button
-            disabled={text.length === 0}
-            className="btn btn-primary mx-2 my-1"
-            style={{
-              color:
-                props.mode === "light" || props.mode === "blue-dark"
-                  ? "black"
-                  : "white",
-            }}
-            onClick={ConvertToLo}
-          >
-            ChangeToLowerCase
-          </button>
-          <button
-            disabled={text.length === 0}
-            className="btn btn-primary mx-2 my-1"
-            style={{
-              color:
-                props.mode === "light" || props.mode === "blue-dark"
-                  ? "black"
-                  : "white",
-            }}
-            onClick={Clear}
-          >
-            Clear
-          </button>
-
-          <button
-            disabled={text.length === 0}
-            className="btn btn-primary mx-2 my-1"
-            style={{
-              color:
-                props.mode === "light" || props.mode === "blue-dark"
-                  ? "black"
-                  : "white",
-            }}
-            onClick={CopyText}
-          >
-            Copy Text
-          </button>
-
-          <button
-            disabled={text.length === 0}
-            className="btn btn-primary mx-2 my-1"
-            style={{
-              color:
-                props.mode === "light" || props.mode === "blue-dark"
-                  ? "black"
-                  : "white",
-            }}
-            onClick={ExtraSpace}
-          >
-            Remove Extra Space
-          </button>
-
-          <button
-            disabled={text.length === 0}
-            className="btn btn-primary mx-2 my-1"
-            style={{
-              color:
-                props.mode === "light" || props.mode === "blue-dark"
-                  ? "black"
-                  : "white",
-            }}
-            onClick={Capitalize}
-          >
-            Capitalize
-          </button>
-          <button
-            disabled={text.length === 0}
-            className="btn btn-primary mx-2 my-1"
-            style={{
-              color:
-                props.mode === "light" || props.mode === "blue-dark"
-                  ? "black"
-                  : "white",
-            }}
-            onClick={downloadTxtFile}
-          >
-            Download Text
-          </button>
-        </div> */}
         </div>
       </StyleRoot>
     </>
