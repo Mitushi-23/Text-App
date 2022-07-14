@@ -11,10 +11,11 @@ import {
   Route,
 } from "react-router-dom";
 
-
+import Radium, { StyleRoot } from 'radium';
 
 
 import React, { useState } from 'react'
+import VoiceToText from "./components/VoiceToText";
 
 function App() {
 
@@ -63,9 +64,12 @@ function App() {
   
   return (
     <>
+    <StyleRoot>
+
     <Router>
       <Navbar title="TextApp" mode={mode} toggleMode={toggleMode} toggleModeBlue = {toggleModeBlue} />
       <Alert alert={alert} />
+      <VoiceToText/>
       <Switch>
           <Route exact path="/about">
             <About mode={mode} />
@@ -75,8 +79,9 @@ function App() {
           </Route>
         </Switch>
   </Router>
+    </StyleRoot>
     </>
   );
 }
 
-export default App;
+export default Radium(App);

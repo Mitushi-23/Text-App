@@ -4,7 +4,7 @@ import {
   Link
 }
  from "react-router-dom";
-
+ import {IoIosMoon} from 'react-icons/io'
 
 
 export default function Navbar(props) {
@@ -27,13 +27,13 @@ export default function Navbar(props) {
         </li>
       </ul>
       <div className="form-check form-switch mx-2">
-  <input className="form-check-input" onClick={props.toggleMode} type="checkbox" id="flexSwitchCheckDefault"/>
-  <label className={`form-check-label text-${props.mode==='light'|| props.mode==='blue-dark'? 'dark' : 'light'}`} htmlFor="flexSwitchCheckDefault">Enable {props.mode==='light'?'dark':'light'} Mode</label>
+  {/* <input className="form-check-input" onClick={props.toggleMode} type="checkbox" id="flexSwitchCheckDefault"/> */}
+  <label className={`form-check-label text-${props.mode==='light'|| props.mode==='blue-dark'? 'dark' : 'light'}`} htmlFor="flexSwitchCheckDefault"> <IoIosMoon onClick={props.toggleMode} style={{cursor:'pointer',fontSize:'20px'}}/></label>
 </div>
-<div className="form-check form-switch mx-2">
+{/* <div className="form-check form-switch mx-2">
   <input className="form-check-input" onClick={props.toggleModeBlue} type="checkbox" id="flexSwitchCheckDefault"/>
   <label className={`form-check-label text-${props.mode==='light'|| props.mode==='blue-dark'? 'dark' : 'light'}`} htmlFor="flexSwitchCheckDefault">Enable {(props.mode==='blue-light' || props.mode==='light' || props.mode ==='dark')?'light blue':'dark blue'} Mode</label>
-</div>
+</div> */}
     </div>
   </div>
 </nav>
