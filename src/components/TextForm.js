@@ -21,6 +21,7 @@ import ClearAllIcon from "@mui/icons-material/ClearAll";
 import { Tooltip } from "@mui/material";
 import LocalPrintshopIcon from "@mui/icons-material/LocalPrintshop";
 import MicOffIcon from "@mui/icons-material/MicOff";
+import DoneIcon from '@mui/icons-material/Done';
 
 const ComponentToPrint = forwardRef((props, ref) => {
   return (
@@ -57,6 +58,16 @@ mic.interimResults = true;
 mic.lang = "en-US";
 
 function TextForm(props) {
+  const [textAlign, settextAlign] = useState("start");
+  const [fontSize, setfontSize] = useState(16);
+  const [fontWeight, setfontWeight] = useState(false);
+  const [fontStyle, setfontStyle] = useState(false);
+  const [copytext, setcopy] = useState(false)
+  const [textDecoration, settextDecoration] = useState(false);
+  const [color, setColor] = useColor("#000");
+  const [pallete, setpallete] = React.useState("#0000");
+  const [text, setText] = useState("");
+  const [output, setoutput] = useState(text)
   /** Voice to text */
   const [listen, setlisten] = useState(false);
   const [note, setnote] = useState(null);
@@ -98,34 +109,30 @@ function TextForm(props) {
   const handleSaveNote = () => {
     setsaveNotes([...saveNotes, note]);
     setnote("");
+    setoutput(output+'\n'+note+'\n')
   };
-  
+ 
 let newNote="";
   saveNotes.map(n=>(
     newNote+=n+'\n'
   ))
   /** -------------------------------------------- */
 
-  const [textAlign, settextAlign] = useState("start");
-  const [fontSize, setfontSize] = useState(16);
-  const [fontWeight, setfontWeight] = useState(false);
-  const [fontStyle, setfontStyle] = useState(false);
-  const [textDecoration, settextDecoration] = useState(false);
-  const [color, setColor] = useColor("#000");
-  const [pallete, setpallete] = React.useState("#0000");
+console.log((output))
 
   const ref = useRef();
   const ConvertToUp = () => {
-    const newText = text.toUpperCase();
-    setText(newText);
+    const newText = output.toUpperCase();
+    setoutput(newText);
     props.showAlert(": Converted to Upper Case", "success");
   };
   const handleOnChange = (event) => {
     setText(event.target.value);
+    setoutput(newNote+'\n'+text);
   };
   const ConvertToLo = () => {
-    const newText = text.toLowerCase();
-    setText(newText);
+    const newText = output.toLowerCase();
+    setoutput(newText);
     props.showAlert(": Converted to Lower Case", "success");
   };
 
@@ -136,11 +143,16 @@ let newNote="";
   //   props.showAlert(": Text copied to clipboard", "success");
 
   // }
-
+console.log(output)
   const CopyText = () => {
-    var text = document.getElementById("box");
-    text.select();
-    copy(text.value);
+    // var text = document.getElementsByClassName("box");
+    // text.select();
+    copy(output);
+    setcopy(true)
+    setInterval(() => {
+      setcopy(false);
+      
+    }, 2000);
   };
   const ExtraSpace = () => {
     const newText = text.split(/[ ]+/);
@@ -149,7 +161,7 @@ let newNote="";
   };
 
   const Capitalize = () => {
-    let newText = text.split(/[.]+/);
+    let newText = output.split(/[.]+/);
     let string;
     let newstr = "";
     console.log(newText.length);
@@ -169,18 +181,17 @@ let newNote="";
           newText[newText.length - 1][0].toUpperCase() +
           newText[newText.length - 1].slice(1);
       }
-      setText(newstr);
+      setoutput(newstr);
       props.showAlert(": Text is Capitalized", "success");
     } else {
       newstr = newText[0][0].toUpperCase() + newText[0].slice(1);
-      setText(newstr);
+      setoutput(newstr);
       props.showAlert(": Text is Capitalized", "success");
     }
   };
   const Clear = () => {
     const newText = "";
     setText(newText);
-    setsaveNotes([])
     props.showAlert(": Text is cleared", "success");
   };
 
@@ -195,7 +206,7 @@ let newNote="";
   //   element.click();
   // };
 
-  const [text, setText] = useState("");
+  
 
   return (
     <>
@@ -203,14 +214,10 @@ let newNote="";
         <ButtonGroup
           aria-label="Basic example"
           style={{
-            "@media (max-width:1770px)": {
-              width: "80%",
-              display: "none",
-              margin: "auto",
-            },
             display: "flex",
             margin: "auto",
             width: "50%",
+            flexWrap:'wrap'
           }}
         >
           <button
@@ -332,13 +339,7 @@ let newNote="";
             >
               <h2 style={{ fontFamily: "var(--play)", fontWeight: "700" }}>
                 {props.heading}
-                &nbsp; &nbsp;
-                <Tooltip title="Copy" arrow placement="top">
-                  <ContentCopyRoundedIcon
-                    onClick={CopyText}
-                    style={{ cursor: "pointer" }}
-                  />
-                </Tooltip>
+                
                 &nbsp; &nbsp;
                 <Tooltip title="Clear All" arrow placement="top">
                   <ClearAllIcon style={{ cursor: "pointer" }} onClick={Clear} />
@@ -346,7 +347,7 @@ let newNote="";
               </h2>
               <textarea
                 className="form-control my-3"
-                id="box"
+                // id="box"
                 style={{
                   backgroundColor:
                     props.mode === "light" ? "white" : "#80808057",
@@ -377,6 +378,10 @@ let newNote="";
               <Button onClick={() => setlisten((prevState) => !prevState)}>
                 {listen ? <span>Stop</span> : <span>Start</span>}
               </Button>
+              &nbsp; &nbsp;
+                <Tooltip title="Clear All" arrow placement="top">
+                  <ClearAllIcon style={{ cursor: "pointer" }} onClick={()=>setnote("")} />
+                </Tooltip>
               <hr />
               <p>{note}</p>
             </div>
@@ -404,19 +409,42 @@ let newNote="";
                     )}
                   </PrintContextConsumer>
                 </ReactToPrint>
+                &nbsp; &nbsp;
+                <Tooltip title="Clear All" arrow placement="top">
+                  <ClearAllIcon style={{ cursor: "pointer" }} onClick={()=>setoutput("")} />
+                </Tooltip>
+                &nbsp; &nbsp;
+                {copytext ? (
+                  // setTimeout(() => {
+                    
+                    // }, 1000)
+                  <DoneIcon/>
+                ):(
+                  
+                  <Tooltip title="Copy" arrow placement="top">
+                  <ContentCopyRoundedIcon
+                  onClick={CopyText}
+                  style={{ cursor: "pointer" }}
+                  />
+                  </Tooltip>
+                  )}
               </h3>
               <hr />
              
+             <div className="box">
+
                 <ComponentToPrint
-                  ref={ref}
-                  text={text+'\n'+newNote+'\n'}
-                  textAlign={textAlign}
-                  fontWeight={fontWeight}
-                  fontSize={fontSize}
-                  fontStyle={fontStyle}
-                  textDecoration={textDecoration}
-                  color={color}
+                // id="box1"
+                ref={ref}
+                text={output}
+                textAlign={textAlign}
+                fontWeight={fontWeight}
+                fontSize={fontSize}
+                fontStyle={fontStyle}
+                textDecoration={textDecoration}
+                color={color}
                 />
+                </div>
             </div>
             <div
               style={{
