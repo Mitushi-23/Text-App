@@ -373,7 +373,7 @@ function TextForm(props) {
                 />
               </Tooltip>
               <hr style={{ height: "2px" }} />
-              <p>{note}</p>
+              <p style={{fontSize:'20px'}}>{note}</p>
             </div>
             <div
               style={{
