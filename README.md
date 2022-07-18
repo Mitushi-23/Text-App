@@ -11,9 +11,9 @@
 ## Features
 
 * In Textify you can modify your text as per your need.
-* It allows you to ```write``` and even ```record``` your text.
+* It allows you to `write` and even `record` your text.
 * By clicking start button you can record your text and then add it to preview section.
-* In the preview section you can even ```copy``` your text or can ```print``` it by click on copy and print icon respectively.
+* In the preview section you can even `copy` your text or can `print` it by click on copy and print icon respectively.
 
 Also the website has a favicon icon to enhance its UI and increase its authenticity.
 <img width="206" alt="faviconicon" src="https://user-images.githubusercontent.com/83106116/179543568-fb8b9338-8f91-4dbb-b206-2ea618f5e1a8.png">
@@ -22,12 +22,12 @@ Also the website has a favicon icon to enhance its UI and increase its authentic
 
 1. Install *Node.js*
 2. Install *npm*
-3. Clone this github repo ``.
+3. Clone this github repo `https://github.com/Mitushi-23/Textify.git`.
 4. Open the local project directory in a terminal, and run: `npm install`.
 
 ## To start the application locally
 
-In the project directory, you can run: ```npm start```
+In the project directory, you can run: `npm start`
 
 ## Need help?
 
