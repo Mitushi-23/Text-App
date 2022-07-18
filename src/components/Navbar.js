@@ -1,73 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { IoIosMoon } from "react-icons/io";
+import logo from "../assets/logo.png";
 
 export default function Navbar(props) {
   return (
     <>
-      <nav
-        className={`navbar navbar-expand-lg navbar-${
-          props.mode === "light" || props.mode === "blue-dark"
-            ? "light"
-            : "dark"
-        } bg-${
-          props.mode === "light" || props.mode === "blue-dark"
-            ? "light"
-            : "dark"
-        }`}
-      >
-        <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
-            {props.title}
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/about">
-                  {props.abouttext}
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <label
-          className={`form-check-label text-${
-            props.mode === "light" || props.mode === "blue-dark"
-              ? "dark"
-              : "light"
-          }`}
-          htmlFor="flexSwitchCheckDefault"
-        >
-          {" "}
-          <IoIosMoon
-            onClick={props.toggleMode}
-            style={{
-              cursor: "pointer",
-              fontSize: "30px",
-              position: "fixed",
-              right: "83px",
-              top: "10px",
-            }}
-          />
-        </label>
-      </nav>
+      <div style={{display:'flex',justifyContent:'start'}}>
+        
+      <img src={logo} alt="" width="200px" height="100px"/>
+      </div>
     </>
   );
 }
