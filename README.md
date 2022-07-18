@@ -1,26 +1,37 @@
 
-# [My-TextApp](https://mytextapp.netlify.app/)
+# Textify
+<p align="center">
+<img src="https://user-images.githubusercontent.com/83106116/179541040-f72e0ce2-53be-4c24-95d4-a0a2bab51e96.png" alt="Textify"/>
 
-## This is my first project in ReactJS.
-
-* In this project you can convert the input text either to uppercase or to lowercase.
-* You can also remove extra spaces from the text.
-* With this app you can also copy the text.
-* The input text can be capitalized and also you can download your new text.
-
-## Here is the downloaded text
-![Screenshot (11)](https://user-images.githubusercontent.com/83106116/144919746-8025f11b-ad98-45ef-92f3-a861bd868afc.png)
+<br/>
+  <a href="https://textify-app.netlify.app/">View Deployed Website</a>
+</p>
 
 
-## I have created my project in different modes.
-### DEMO-
+## Features
 
-Light Mode
-![Screenshot (3)](https://user-images.githubusercontent.com/83106116/144919045-d79e4d67-5e14-433c-b8b5-a2deaab9f546.png)
+* In Textify you can modify your text as per your need.
+* It allows you to ```write``` and even ```record``` your text.
+* By clicking start button you can record your text and then add it to preview section.
+* In the preview section you can even ```copy``` your text or can ```print``` it by click on copy and print icon respectively.
 
-Dark Mode
-![Screenshot (12)](https://user-images.githubusercontent.com/83106116/144919957-d1bf3c0b-fe30-4a3c-a2b6-a50fe6c40580.png)
+Also the website has a favicon icon to enhance its UI and increase its authenticity.
+<img width="206" alt="faviconicon" src="https://user-images.githubusercontent.com/83106116/179543568-fb8b9338-8f91-4dbb-b206-2ea618f5e1a8.png">
 
+## Installation Instructions
 
+1. Install *Node.js*
+2. Install *npm*
+3. Clone this github repo ``.
+4. Open the local project directory in a terminal, and run: `npm install`.
 
+## To start the application locally
 
+In the project directory, you can run: ```npm start```
+
+## Need help?
+
+Feel free to contact me on
+[![Instagram](https://img.shields.io/badge/Instagram-follow-purple.svg?logo=instagram&logoColor=white)](https://www.instagram.com/mitushi_agrawal_/) [![Twitter](https://img.shields.io/badge/Twitter-follow-blue.svg?logo=twitter&logoColor=white)](https://twitter.com/mitushi_agrawal) [![LinkedIn](https://img.shields.io/badge/LinkedIn-follow-green.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mitushi-agrawal-bb75b0210/)
+
+---------
